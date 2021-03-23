@@ -23,11 +23,10 @@ function _tide_prompt
         printf '%s' $leftPrompt[1]
 
         set_color $tide_prompt_connection_color
-        test -n "$tide_prompt_connection_icon" || set -l tide_prompt_connection_icon ' '
-        set -l lengthToMove (math $COLUMNS - (_tide_decolor "$leftPrompt[1]""$rightPrompt[1]" | string length))
-        test $lengthToMove -gt 0 && string repeat --no-newline --max $lengthToMove $tide_prompt_connection_icon
-
-        printf '%s\n' $rightPrompt[1]
+        set -l lengthToMove (math $COLUMNS - (_tide_decolor "$leftPrompt[1]""$rightPrompt[1]" | string length) - 1)
+        test $lengthToMove -lt 0 && set lengthToMove 0
+        # String pad with escapes mimics string repeat
+        string pad --width $lengthToMove --char=$tide_prompt_connection_icon "$rightPrompt[1]"\e
     end
 
     set -U $_tide_right_prompt_display_var $rightPrompt[$leftPromptHeight]

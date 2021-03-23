@@ -48,7 +48,7 @@ tide_prompt_char_vi_insert_icon '❯'
 tide_prompt_char_vi_replace_icon '▶'
 tide_prompt_char_vi_visual_icon V
 tide_prompt_connection_color 6C6C6C
-tide_prompt_connection_icon ''
+tide_prompt_connection_icon
 tide_pwd_bg_color 3465A4
 tide_pwd_color_anchors E4E4E4
 tide_pwd_color_dirs E4E4E4
